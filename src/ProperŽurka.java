@@ -35,7 +35,7 @@ public class ProperŽurka {
 		scanner.close();
 	}
 	
-	public void speci(String hrana) throws IOException {
+	public static void speci(String hrana) throws IOException {
 		String pythonScriptPath = "/home/klemen/eclipse-workspace/potica/potica/" + hrana + ".py";
         String[] cmd = {"python3", pythonScriptPath};
         ProcessBuilder pb = new ProcessBuilder(cmd);

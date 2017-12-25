@@ -1,5 +1,6 @@
 
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ProperŽurka {
@@ -8,7 +9,7 @@ public class ProperŽurka {
 	int količina;
 	int kapacitetaŽelodca;
 	
-	public void začniŽurko() {
+	public void začniŽurko() throws IOException {
 		
 		imeHrane = "Čokoladna potica";
 		int količinaPotice = 1000;
@@ -23,34 +24,23 @@ public class ProperŽurka {
 			String odgovor = scanner.nextLine();
 			
 			if(odgovor.equals("da")) {
-				babi_1();
+				speci("potica");
 			} else if(odgovor.equals("ne")) {
-				babi_2();
+				speci("toast");
 			} else {
-				System.out.println("Ali želiš še topli sendvič?");
-				babi_3();
+				speci("potica");
+				speci("potica");
 			}
 		}
 		scanner.close();
 	}
 	
-	
-	public void babi_1() {
-		System.out.println("Izvoli 2 kosa potice");
-		System.out.println();
-		
+	public void speci(String hrana) throws IOException {
+		String pythonScriptPath = "/home/klemen/eclipse-workspace/potica/potica/" + hrana + ".py";
+        String[] cmd = {"python3", pythonScriptPath};
+        ProcessBuilder pb = new ProcessBuilder(cmd);
+        Process p = pb.start();
 	}
 	
-	public void babi_2()  {
-		System.out.println("Izvoli 1 kos potice");
-		System.out.println("Izvoli topli sendvič");
-		System.out.println();
-
-	}
 	
-	public void babi_3() {
-		System.out.println("Izvoli topli sendvič");	
-		System.out.println();
-	}
-
 }
